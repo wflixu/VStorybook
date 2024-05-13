@@ -38,10 +38,6 @@ jobs:
           message: "Release v${{ steps.package-version.outputs.version }}"
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install dependencies
-        run: pnpm  install
-      - name: build
-        run: pnpm  build
       - name: publish
         run: npm  publish
         env:
