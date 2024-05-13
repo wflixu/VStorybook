@@ -31,15 +31,15 @@ jobs:
         uses: tyankatsu0105/read-package-version-actions@v1
         id: package-version
 
+      - name: publish
+        run: npm  publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create a tag
         uses: negz/create-tag@v1
         with:
           version: v${{ steps.package-version.outputs.version }}
           message: "Release v${{ steps.package-version.outputs.version }}"
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: publish
-        run: npm  publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
