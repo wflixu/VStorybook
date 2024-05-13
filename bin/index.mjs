@@ -8,9 +8,9 @@ program.name("vsb").description("CLI to VStorybook").version("0.0.1");
 program
   .command("init")
   .description("init vstorybook")
-  .action((str, options) => {
+  .action((options) => {
     console.log("start init");
-    console.log(str, options);
+    console.log(options);
   });
 
 program
